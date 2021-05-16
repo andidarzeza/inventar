@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -126,15 +128,19 @@ public class BookServiceImpl implements BookService {
         });
     }
     private void removeBookFromAssociate(Associate associate, Book book) {
+        List<AssociateBookInfo> bookInfos = new ArrayList<>();
         associate.getBookInfo().forEach(bookInfo-> {
             if(bookInfo.getBookID().equals(book.getId())) {
-
+                Optional<PrenotedBook> prenotedBook = this.prenotedBookRepository.findByAssociateIDAndBookId(associate.getId(), book.getId());
+                bookInfos.add(bookInfo);
+                if(prenotedBook.isPresent()) {
+                    this.prenotedBookRepository.delete(prenotedBook.get());
+                }
             }
         });
-//        associate.getBooks().forEach(prenotedBook -> {
-//            if(prenotedBook.getBook().getId().equals(book.getId())) {
-//                this.associateService.removeBookFromAssociate(associate.getId(), prenotedBook);
-//            }
-//        });
+        bookInfos.forEach(bookInf -> {
+            associate.getBookInfo().remove(bookInf);
+        });
+        associateRepository.save(associate);
     }
 }
