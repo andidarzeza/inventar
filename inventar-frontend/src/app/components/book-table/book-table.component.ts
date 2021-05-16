@@ -65,8 +65,12 @@ export class BookTableComponent implements OnInit {
 
   deleteBook(id: string): void {
     this.openConfirmDialog().afterClosed().subscribe((result: any) => {
+      console.log(result);
+      
       if(result) {
         this.bookService.removeBook(id).subscribe((res: any) => {
+          console.log(res);
+          
           this.query();
           this.toaster.info("Elementi u hoq me sukses", "Sukses", {timeOut: 7000});
         })
