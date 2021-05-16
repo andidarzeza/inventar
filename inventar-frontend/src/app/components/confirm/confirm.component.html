@@ -1,0 +1,13 @@
+<div class="container">
+    <span></span>
+    <div class="actions">
+        <mat-icon class="pointer" (click)="closeDialog()">close</mat-icon>
+    </div>
+</div>
+<div class="message">
+    Deshironi ta fshini kete rekord? Ky veprim nuk eshte me i tjetersueshem.
+</div>
+<div class="commands">
+    <button mat-raised-button color="warn" class="yes-button" (click)="confirm(true)">PO</button>
+    <button mat-raised-button (click)="confirm(false)">JO</button>
+</div>

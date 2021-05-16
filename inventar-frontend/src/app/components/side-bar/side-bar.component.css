@@ -1,0 +1,41 @@
+.logo-container {
+    color: white;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.0%;
+}
+
+.opened-menu-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    padding: 10px 18px;
+    color: white;
+    outline: none;
+}
+
+.title {
+    font-size: 16px;
+    margin-left: 13px;
+}
+
+.router-link-active {
+    background: hsla(0, 0%, 100%, .15);
+}
+
+.dark-text {
+    color: #9F9F9F;
+}
+
+.light-text {
+    color: white;
+}

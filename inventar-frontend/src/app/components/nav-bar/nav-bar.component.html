@@ -1,0 +1,15 @@
+<mat-toolbar class="toolbar {{sharedService.theme}}">
+    <span></span>
+    <div class="menu-container">
+        <div class="menu-item pointer" (click)="toggleFullScreenMode()" style="color: white;">
+            <mat-icon *ngIf="!fullScreenMode">fullscreen</mat-icon>
+            <mat-icon *ngIf="fullScreenMode">fullscreen_exit</mat-icon>
+        </div>
+        <div class="menu-item" style="color: white;">
+            <mat-icon>access_time</mat-icon>
+            <span style="margin-left: 5px;
+            font-weight: 200;
+            font-size: 17px;">{{currentDate | date: 'short'}}</span>
+        </div>
+    </div>
+</mat-toolbar>
