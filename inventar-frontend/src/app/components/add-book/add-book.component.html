@@ -1,7 +1,7 @@
 <div class="container">
-    <span></span>
+    <span>Shto nje liber te ri</span>
     <div class="actions">
-        <mat-icon class="pointer" (click)="closeDialog(false)">close</mat-icon>
+        <mat-icon class="pointer {{sharedService.theme}}-icon" (click)="closeDialog(false)">close</mat-icon>
     </div>
 </div>
 <form [formGroup]="bookGroup">

@@ -49,7 +49,7 @@ export class AssociateTableComponent implements OnInit {
   openDialog(associate?: IAssociate): void {
     const dialogRef = this.dialog.open(AddAssociateComponent, {
       data: associate,
-      width: '400px',
+      width: '700px',
       disableClose: true,
       panelClass: this.sharedService.theme + '-class'
     });

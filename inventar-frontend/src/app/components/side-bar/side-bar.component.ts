@@ -34,6 +34,12 @@ export class SideBarComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.items.forEach((item: any) => {
+      if(item.link === window.location.pathname) {
+        const index = this.items.indexOf(item);
+        this.animateSelectedOption(index);
+      }
+    });
   }
 
   toggleSideBar(): void {
@@ -48,12 +54,8 @@ export class SideBarComponent implements OnInit {
   openSideBar(): void {
     const sideBar = document.getElementById('sidebar') as HTMLElement;
     const application = document.getElementById('application-body') as HTMLElement;
-    const toggle = document.getElementById('toggle-id') as HTMLElement;
     sideBar.style.width = '18%';
     application.style.width = '82%';
-    toggle.style.right = '0';
-    toggle.style.left = 'auto';
-    toggle.style.transform =  'none';
     const items = document.getElementsByClassName('opened-menu-item') as HTMLCollection;
     for(var i = 0;i<items.length;i++) {
       const item = items[i] as HTMLElement;
@@ -76,16 +78,14 @@ export class SideBarComponent implements OnInit {
     }
   }
 
-  changePaddingOfItems(className: string): void {
-    const items = document.getElementsByClassName(className) as HTMLCollection;
-    for(var i = 0;i<items.length;i++) {
-      const item = items[i] as HTMLElement;
-      if(this.isOpened) {
-        item.style.padding = '10px 18px';
-      } else {
-        item.style.padding = '10px 25px';
-      } 
+
+  animateSelectedOption(index: number): void {
+    console.log(index);
+    const activeItem = document.getElementById("active-item") as HTMLElement;
+    if(activeItem) {
+      activeItem.style.transform = `translateY(${index * 100}%)`;
     }
+    
   }
 
 }

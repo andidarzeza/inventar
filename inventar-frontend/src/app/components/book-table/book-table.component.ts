@@ -46,7 +46,7 @@ export class BookTableComponent implements OnInit {
 
   openDialog(book?: IBook): void {
     const dialogRef = this.dialog.open(AddBookComponent, {
-      width: '400px',
+      width: '700px',
       disableClose: true,
       data: book,
       panelClass: this.sharedService.theme + '-class'

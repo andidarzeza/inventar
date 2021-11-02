@@ -12,6 +12,7 @@ body {
 
 .pointer {
     cursor: pointer;
+    user-select: none;
 }
 
 .no-select {
@@ -276,7 +277,7 @@ button.toast-close-button {
 }
 
 .dark-table {
-    background: #222831;
+    background: #1d252a;
 }
 
 .light-text {
@@ -285,6 +286,10 @@ button.toast-close-button {
 
 .dark-text {
     color: white;
+}
+
+.dark-icon {
+    color: #f6af06;
 }
 
 .light-button {
@@ -296,7 +301,7 @@ button.toast-close-button {
 }
 
 .dark-class>mat-dialog-container {
-    background: #393E46;
+    background: #1d252a;
     color: white;
 }
 
@@ -305,8 +310,8 @@ button.toast-close-button {
 }
 
 .dark-card {
-    background: #222831;
-    color: white;
+    background: #1d252a;
+    color: #9F9F9F;
 }
 
 .light-card {}
