@@ -122,4 +122,8 @@ export class AssociateTableComponent implements OnInit {
       this.toaster.info("Elementi u hoq me sukses", "Sukses", {timeOut: 7000});
     });
   }
+
+  getHeight(): number {
+    return window.innerHeight - 275;
+  }
 }

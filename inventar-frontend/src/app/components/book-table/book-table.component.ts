@@ -90,4 +90,8 @@ export class BookTableComponent implements OnInit {
     this.query();
   }
 
+  getHeight(): number {
+    return window.innerHeight - 275;
+  }
+
 }

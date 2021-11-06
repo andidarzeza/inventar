@@ -9,71 +9,63 @@
     </div>
 </div>
 
-<div class="book-table" *ngIf="dataSource.length !== 0">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 {{sharedService.theme}}-table" style="width: 95%;">
-
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Titulli </th>
-            <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.title}} </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="author">
-            <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Autori </th>
-            <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.author}} </td>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="numberOfPages">
-            <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Faqet </th>
-            <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.numberOfPages}} </td>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="stock">
-            <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Sasia </th>
-            <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.stock}} </td>
-        </ng-container>
-        <ng-container matColumnDef="year">
-            <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Viti </th>
-            <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.year}} </td>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text custom-header">Veprimet</th>
-            <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text">
-                <button mat-icon-button color="warn" (click)="deleteBook(element?.id)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-                <button mat-icon-button (click)="editBook(element)">
-                    <mat-icon>edit</mat-icon>
-                </button>
-            </td>
-
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+<div class="{{sharedService.theme}}-book-tb-container" [style.height.px]="getHeight()">
+    <div class="book-table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 {{sharedService.theme}}-table" style="box-shadow: none;">
+    
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+    
+    
+            <!-- Name Column -->
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Titulli </th>
+                <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.title}} </td>
+            </ng-container>
+    
+            <!-- Weight Column -->
+            <ng-container matColumnDef="author">
+                <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Autori </th>
+                <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.author}} </td>
+            </ng-container>
+    
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="numberOfPages">
+                <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Faqet </th>
+                <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.numberOfPages}} </td>
+            </ng-container>
+    
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="stock">
+                <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Sasia </th>
+                <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.stock}} </td>
+            </ng-container>
+            <ng-container matColumnDef="year">
+                <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text"> Viti </th>
+                <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text"> {{element?.year}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="centered-text {{sharedService.theme}}-text custom-header">Veprimet</th>
+                <td mat-cell *matCellDef="let element" class="centered-text {{sharedService.theme}}-text">
+                    <button mat-icon-button color="warn" (click)="deleteBook(element?.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="editBook(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+    
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
 </div>
-<div class="book-table" *ngIf="dataSource.length !== 0">
+
+
+<div class="book-table">
     <mat-paginator [length]="totalItems" class="{{sharedService.theme}}-table {{sharedService.theme}}-text" [pageSize]="size" [pageSizeOptions]="[5, 10, 25, 100]" (page)="paginatorEvent($event)" style="box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 position: sticky;bottom: 0;width:95%">
     </mat-paginator>
-
-</div>
-
-
-<div class="no-item-message" *ngIf="dataSource.length === 0">
-    <div class="message-container">
-        <mat-icon style="    color: #3f51b5;
-        width: 70px;
-        height: 70px;
-        font-size: 70px;" class="no-select">info</mat-icon>
-        <span class="message no-select">Tabela eshte bosh!</span>
-    </div>
 </div>
