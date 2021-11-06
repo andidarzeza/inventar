@@ -37,4 +37,11 @@
     </mat-form-field>
 </form>
 
-<button mat-raised-button color="primary" [disabled]="bookGroup?.invalid" (click)="addBook()">{{buttonText}}</button>
+
+<div class="actions">
+    <span></span>
+    <span>
+        <!-- <button mat-raised-button color="primary" [disabled]="bookGroup?.invalid" (click)="addBook()">Cancel</button> -->
+        <button mat-raised-button color="primary" [disabled]="bookGroup?.invalid" (click)="addBook()">{{buttonText}}</button>
+    </span>
+</div>

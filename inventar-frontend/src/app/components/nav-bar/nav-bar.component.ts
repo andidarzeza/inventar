@@ -10,17 +10,13 @@ export class NavBarComponent implements OnInit, OnDestroy {
   pageTitle = 'Lista e Librave';
   fullScreenMode = false;
   interval = null;
-  repeatAfter = 60;
   constructor(public sharedService: SharedService) { }
-  item: any = this.sharedService.item;
 
   currentDate = new Date();
   ngOnInit(): void {
-    this.repeatAfter = 60 - this.currentDate.getSeconds();
     this.interval = setInterval(() => {
       this.currentDate = new Date();
-      this.repeatAfter = 60;
-    }, this.repeatAfter * 1000);
+    }, 1000);
   }
 
   ngOnDestroy(): void {

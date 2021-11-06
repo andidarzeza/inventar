@@ -1,7 +1,7 @@
 <div class="container">
     <span></span>
     <div class="actions">
-        <mat-icon class="pointer" (click)="closeDialog(false)">close</mat-icon>
+        <mat-icon class="pointer" class="{{sharedService.theme}}-icon" (click)="closeDialog(false)">close</mat-icon>
     </div>
 </div>
 <form [formGroup]="associateGroup">
@@ -23,4 +23,7 @@
     </mat-form-field>
 </form>
 
-<button mat-raised-button color="primary" [disabled]="associateGroup?.invalid" (click)="addAssociate()">{{buttonText}}</button>
+<div class="actions">
+    <span></span>
+    <button mat-raised-button color="primary" [disabled]="associateGroup?.invalid" (click)="addAssociate()">{{buttonText}}</button>
+</div>

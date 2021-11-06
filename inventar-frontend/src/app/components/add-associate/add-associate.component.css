@@ -12,6 +12,10 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
 
 /* Firefox */
 

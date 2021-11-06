@@ -31,3 +31,7 @@ input[type=number] {
 .stock-class {
     margin-top: 3.5px;
 }
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
