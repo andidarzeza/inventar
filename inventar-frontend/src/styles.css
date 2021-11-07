@@ -285,7 +285,7 @@ button.toast-close-button {
 }
 
 .dark-text {
-    color: white;
+    color: #9F9F9F;
 }
 
 .dark-icon {
@@ -418,4 +418,42 @@ button.toast-close-button {
 
 .table-actions {
     padding: 25px 25px;
+}
+
+.dark-paginator .mat-select-value {
+    color: #9F9F9F !important;
+}
+
+.dark-paginator .mat-select-arrow {
+    color: #9F9F9F !important;
+}
+
+.dark-paginator .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #f6af06;
+}
+
+.dark-add-entity {
+    background: #ff6347 !important;
+    color: white !important;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: #ff6347;
+}
+
+.mat-form-field-subscript-wrapper {
+    font-size: 80% !important;
+}
+
+.mat-error {
+    display: block !important;
+    color: #ff6347 !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #9F9F9F !important;
+}
+
+.dark-confirm-button {
+    color: white;
 }
