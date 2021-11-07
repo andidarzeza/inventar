@@ -7,7 +7,7 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  isOpened = true;
+  isOpened = false;
   constructor(public sharedService: SharedService) { }
   items = [
     {
