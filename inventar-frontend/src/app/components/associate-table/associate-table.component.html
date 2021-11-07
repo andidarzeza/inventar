@@ -1,3 +1,4 @@
+<mat-progress-bar mode="indeterminate" [@inOutAnimation] *ngIf="sharedService.stillLoading && sharedService.isSpinnerEnabled" style="position: absolute;top: 64px;left:0"></mat-progress-bar>
 <div class="table-container {{sharedService.theme}}-table">
     <div class="titulli">
         <mat-icon class="{{sharedService.theme}}-icon">supervised_user_circle</mat-icon>
@@ -11,7 +12,7 @@
     </div>
 </div>
 
-<div class="{{sharedService.theme}}-book-tb-container" [style.height.px]="getHeight()">
+<div class="{{sharedService.theme}}-book-tb-container" [style.height.px]="getHeight(0)">
     <div class="book-table">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 {{sharedService.theme}}-table" style="box-shadow: none;">
     
@@ -75,6 +76,9 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+    </div>
+    <div *ngIf="dataSource.length == 0" class="no-data" [style.height.px]="getHeight(60)">
+        Nuk ka te dhena ne tabele!
     </div>
 </div>
 

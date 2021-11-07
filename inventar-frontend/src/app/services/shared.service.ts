@@ -10,6 +10,7 @@ export class SharedService {
 
   private dataSource = new BehaviorSubject<string>("");
   public theme = '';
+  public sidebarWidth = 15;
   public stillLoading = false;
   private darkMode = true;
   public isSpinnerEnabled = true;
@@ -29,7 +30,26 @@ export class SharedService {
     }));
   }
 
-  checkLoadingSpinner(totalRequest: number): void {
+  activateLoadingSpinner(): void {
+    this.stillLoading = true;
+    // this.fitSpinnerToPage();
+  }
+
+  private fitSpinnerToPage(): void {
+    const spinner = document.getElementById('spinner-id') as HTMLElement;
+    const sidebar = document.getElementById('sidebar') as HTMLElement;
+    setTimeout(() => {
+      if(spinner && sidebar) {
+        if(sidebar.style.width === this.sidebarWidth + '%') {
+          spinner.style.width = 100 - this.sidebarWidth + '%';
+        } else {
+          spinner.style.width= 'calc(100% - 60px)';
+        }
+      }
+    }, 500);
+  }
+
+  checkLoadingSpinner(totalRequest: number): void { 
     if(totalRequest === 0) {
       setTimeout(()=>{
         this.stillLoading = false;
@@ -37,6 +57,8 @@ export class SharedService {
     } else {
       const spinner = document.getElementById('spinner-id') as HTMLElement;
       const sidebar = document.getElementById('sidebar') as HTMLElement;
+      console.log(sidebar.style.width);
+      
       if(sidebar.style.width === '18%') {
         if(spinner) {
           spinner.style.width= '82%';

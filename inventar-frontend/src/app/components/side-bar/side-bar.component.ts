@@ -7,7 +7,7 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  isOpened = false;
+  isOpened = true;
   constructor(public sharedService: SharedService) { }
   items = [
     {
@@ -54,8 +54,8 @@ export class SideBarComponent implements OnInit {
   openSideBar(): void {
     const sideBar = document.getElementById('sidebar') as HTMLElement;
     const application = document.getElementById('application-body') as HTMLElement;
-    sideBar.style.width = '18%';
-    application.style.width = '82%';
+    sideBar.style.width = this.sharedService.sidebarWidth + '%';
+    application.style.width = 100 - this.sharedService.sidebarWidth + '%';
     const items = document.getElementsByClassName('opened-menu-item') as HTMLCollection;
     for(var i = 0;i<items.length;i++) {
       const item = items[i] as HTMLElement;

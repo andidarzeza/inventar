@@ -33,7 +33,7 @@ export class StatisticsComponent implements OnInit {
 
   query(): void {
     this.totalRequests++;
-    this.sharedService.stillLoading = true;
+    this.sharedService.activateLoadingSpinner();
     this.statisticsService.getRankingTable(this.page, this.size).subscribe((res: any) => {
       // this.dataSource = res?.body.associates;
       // this.totalItems = res?.body.count;

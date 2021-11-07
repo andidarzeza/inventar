@@ -31,7 +31,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CilesimetComponent } from './components/cilesimet/cilesimet.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { StatisticsComponent } from './components/statistics/statistics.component';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -69,6 +69,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
+    MatProgressBarModule,
     ToastrModule.forRoot()
   ],
   providers: [],

@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -12,7 +13,30 @@ import { ConfirmComponent } from '../confirm/confirm.component';
 @Component({
   selector: 'app-associate-table',
   templateUrl: './associate-table.component.html',
-  styleUrls: ['./associate-table.component.css']
+  styleUrls: ['./associate-table.component.css'],
+  animations: [
+    trigger(
+      'inOutAnimation', 
+      [
+        transition(
+          ':enter', 
+          [
+            style({ opacity: 0 }),
+            animate('400ms ease-out', 
+                    style({opacity: 1 }))
+          ]
+        ),
+        transition(
+          ':leave', 
+          [
+            style({ opacity: 1 }),
+            animate('400ms ease-in', 
+                    style({ opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class AssociateTableComponent implements OnInit {
 
@@ -37,7 +61,7 @@ export class AssociateTableComponent implements OnInit {
 
   query(): void {
     this.totalRequests++;
-    this.sharedService.stillLoading = true;
+    this.sharedService.activateLoadingSpinner();
     this.associateService.getAssociates(this.page, this.size).subscribe((res: HttpResponse<any>) => {
       this.dataSource = res?.body.associates;
       this.totalItems = res?.body.count;
@@ -123,7 +147,7 @@ export class AssociateTableComponent implements OnInit {
     });
   }
 
-  getHeight(): number {
-    return window.innerHeight - 275;
+  getHeight(difference: number): number {
+    return window.innerHeight - 275 - difference;
   }
 }
